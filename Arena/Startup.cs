@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Arena.Models;
+using Arena.Models.DB;
+using Microsoft.EntityFrameworkCore;
 
 namespace Arena
 {
@@ -26,6 +29,8 @@ namespace Arena
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //JWT authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -39,7 +44,11 @@ namespace Arena
 
                 };
             });
+
+            //EF configuration
+            //services.AddDbContext<arena1Context>(options => options.UseSqlServer(Configuration.GetConnectionString("ArenaDatabase")));
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
