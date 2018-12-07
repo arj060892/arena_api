@@ -23,7 +23,7 @@ namespace Arena
         {
             Configuration = configuration;
         }
-
+        string lockKey = "E546C8DF278CD5931069B522E695D4F2";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -40,7 +40,7 @@ namespace Arena
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = "mysite.com",
                     ValidAudience = "mysite.com",
-                    IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes("asdfawefwewrwwefjnwkf"))
+                    IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes(lockKey))
 
                 };
             });

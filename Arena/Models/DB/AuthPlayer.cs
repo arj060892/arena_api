@@ -9,6 +9,6 @@ namespace Arena.Models.DB
     public class AuthPlayer
     {
         [Key]
-        public int isUserValid { get; set; }
+        public decimal userId { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Arena.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,18 @@ namespace Arena.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        string lockKey = "E546C8DF278CD5931069B522E695D4F2";
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                var userID = EncryptDecrypt.DecryptString(identity.Name,lockKey);
+                IEnumerable<Claim> claims = identity.Claims;                
+
+            }
             return new string[] { "value1", "value2" };
         }
 

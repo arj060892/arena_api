@@ -6,11 +6,11 @@ WHERE SPECIFIC_SCHEMA = N'dbo'
 )
 DROP PROCEDURE dbo.sp_auth_player
 GO
--- EXECUTE dbo.sp_auth_player 'akhilrj@gmail.com','strong@j1'
+-- EXECUTE dbo.sp_auth_player 'akhilrj@gmail.com','strong@1'
 CREATE PROCEDURE dbo.sp_auth_player
     @username NVARCHAR(50),
     @password NVARCHAR(100)
 AS
-    SELECT COUNT(pd_user_name) 'isUserValid' from players_dtls(nolock) 
+    SELECT pd_id as 'userId' from players_dtls(nolock) 
     where pd_user_name = @username and pd_password = @password
 GO
