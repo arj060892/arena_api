@@ -21,6 +21,7 @@ namespace Arena.Models.DB
         public virtual DbSet<PlayersDtls> PlayersDtls { get; set; }
         public virtual DbSet<SlotMaster> SlotMaster { get; set; }
         public virtual DbSet<AuthPlayer> AuthPlayer { get; set; }
+        public virtual DbSet<PlayerDtls> PlayerDtls { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
